@@ -172,14 +172,49 @@ os.system('cls')
 
 class person:
     name='jake'
-    def __init__(arg):
+    _name='rose'  #私有属性
+    __name1='jake1' #隐藏属性
+    def __init__(arg): #构造函数
         print('__init__ 被调用')
     def run (self):
-        print(f'run {self}')
+        print(f'run {self.name}')
         print(f'run {self.name} id {id(self.name)}')
+    def __del__(self): #析构函数 被del或者对象全部被调用后执行
+        print('析构函数被调用')
+    def __str__(self): #打印对象时调用
+        return'__str__ 被打印了'
     
 p1=person()
 p1.run()
 print(p1.name,id(p1.name))
+print('访问隐藏属性__name1',p1._person__name1) #可读写
+print('p1._name ',p1._name)
+print(p1)
+del p1
 print('person.name ',person.name,'id ',id(person.name))
+
+os.system('cls')
+class father:
+    def eat(self):
+        print('father eat')
+        print('father super() ',super())
+class son(father):
+    @staticmethod #静态方法  不访问类和对象的数据,节约内存
+    def sleep():
+        pass
+    @classmethod #类方法 访问私有属性
+    def sing(cls):
+        print('cls 类对象','cls ')
+    def eat(self):
+        print('son ',repr(son))
+        print('son self',repr(self))
+        print('son eat')
+        super().eat() #调用父类方法
+        super(son,self).eat() #调用父类方法
+son().eat()
+son().sing()
+
+os.system('cls')
+
+print(son.__mro__) #查看继承关系
 
