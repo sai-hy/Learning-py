@@ -1,0 +1,8 @@
+.vscode/settings.json
+.idea/.gitignore
+.idea/misc.xml
+.idea/modules.xml
+.idea/py.iml
+.idea/vcs.xml
+.idea/inspectionProfiles/profiles_settings.xml
+__pycache__/using_sys.cpython-313.pyc

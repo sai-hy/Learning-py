@@ -1,0 +1,1 @@
+console.log('avc'.search('c'))
