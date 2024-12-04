@@ -183,6 +183,8 @@ class person:
         print('析构函数被调用')
     def __str__(self): #打印对象时调用
         return'__str__ 被打印了'
+    # def __new__ (self): #创建对象时调用  静态方法 没有传参数
+    #     pass
     
 p1=person()
 p1.run()
@@ -193,18 +195,18 @@ print(p1)
 del p1
 print('person.name ',person.name,'id ',id(person.name))
 
-os.system('cls')
+# os.system('cls')
 class father:
     def eat(self):
         print('father eat')
         print('father super() ',super())
 class son(father):
-    @staticmethod #静态方法  不访问类和对象的数据,节约内存
+    @staticmethod #静态方法  不访问类和对象的数据,节约内存 只能访问类属性
     def sleep():
-        pass
-    @classmethod #类方法 访问私有属性
+        print('son sleep')
+    @classmethod #类方法 访问私有属性 只能访问类属性
     def sing(cls):
-        print('cls 类对象','cls ')
+        print('cls 类对象',cls )
     def eat(self):
         print('son ',repr(son))
         print('son self',repr(self))
@@ -213,8 +215,120 @@ class son(father):
         super(son,self).eat() #调用父类方法
 son().eat()
 son().sing()
+son().sleep()
 
 os.system('cls')
 
 print(son.__mro__) #查看继承关系
+
+# 单例对象
+class Singleton:
+    __instance = None
+    def __new__(cls, *args, **kwargs):
+        if cls.__instance is None:
+            cls.__instance = super().__new__(cls)
+        return cls.__instance
+    def __init__(self):
+        print('init')
+        
+print(Singleton())
+print(Singleton())
+print(Singleton())
+
+#通过模块实现单例模式  只有一个对象
+#应用场景 : 游戏 回收站 音乐 数据库配置
+
+os.system('cls')
+#魔法方法和属性
+class exp:
+    '''exp类中的___doc__属性信息'''
+    pass
+def exp1():
+    '''exp1函数中的___doc__属性信息'''
+    pass
+print(exp.__doc__) #魔法属性 打印类中的多行注释信息
+print(exp1.__doc__) #魔法属性 打印函数中的多行注释信息
+print(exp1.__module__) #打印模块
+print(exp.__class__) #打印模块类
+print(exp1.__class__) #打印模块类
+
+os.system('cls')
+#文件
+f=open('E:\it\py\myfile1.txt','r+')
+print(f.name)
+print(f.mode)
+print(f.closed,end='\n')
+
+# print(f.read(),end='\n')
+# print(f.read(4),end='\n')
+# print('\n',f.readline())
+# print(f.read())
+
+# print('\n',f.readlines())
+print('w之前 ',f.read())
+
+f.write('hello world  hahaha \r')
+print(f.tell())
+f.seek(0,0)
+print('w之后 ',f.read())
+
+f.close()
+# print(f.closed)
+
+os.system('cls')
+
+with open('myfile.txt','w',encoding='utf-8') as f:
+    # print(f.read())
+    print(f.encoding)
+    f.write('你好吗?❓？')
+    print(f.tell())
+    
+os.system('cls')
+#图片赋值
+""" with open('E:\图片\【哲风壁纸】2024-11-19 09_50_52.png','rb') as f:
+    img=f.read()
+    # print(img)
+with open('./图片.png','wb') as f:
+    f.write(img)
+    print(f) """
+
+#目录
+print(os.getcwd()) #获取当前目录
+print(os.listdir('../')) #获取当前目录下的文件
+
+os.system('cls')
+
+#迭代器  __iter__对象返回了对象  __next__
+from collections.abc import Iterable, Iterator
+print(isinstance('123',Iterable))
+print(isinstance('123',(tuple,str)))
+
+li=[1,2,3]
+li2=iter(li)
+print(li2.__next__())
+print(li2.__next__())
+print(li2.__next__())
+# print(li2.__next__()) #报错 迭代器取完元素会报错
+
+li3=li.__iter__()
+print(li3.__next__())
+print(li3.__next__())
+print(li3.__next__())
+
+os.system('cls')
+
+str='123'
+print(isinstance(str,Iterable))
+print(isinstance(str,Iterator))
+
+print(isinstance(iter(str),Iterable))
+print(isinstance(iter(str),Iterator))
+
+li=[i*5 for i in range(5)]      #列表推导式
+gen=(i*5 for i in range(5))     #生成器
+print(li)
+print(gen)
+print(next(gen))
+print(next(gen))
+print(next(gen))
 
