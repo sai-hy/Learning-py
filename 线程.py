@@ -61,8 +61,8 @@ def song(n):
     
     
 if __name__ == '__main__':
-    p1=Process(target=sing,args=('jake',))
-    p2=Process(target=song,args=('rose',))
+    p1=Process(target=sing,args=('jake',))  # 创建进程
+    p2=Process(target=song,args=('rose',))   # 创建进程
     p1.start()
     p2.start()
     print('p1 pid ',p1.pid)
