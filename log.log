@@ -1,0 +1,9 @@
+2024-12-06 01:12:37,205 - DEBUG - debug message
+2024-12-06 01:12:37,205 - INFO - info message
+2024-12-06 01:12:37,205 - WARNING - warning message
+2024-12-06 01:12:37,205 - ERROR - error message
+2024-12-06 01:12:37,205 - CRITICAL - critical message
+2024-12-06 01:12:37,205 - CRITICAL - critical message
+2024-12-06 01:12:37,205 - WARNING - warning message
+2024-12-06 01:12:37,205 - WARNING - warning message
+2024-12-06 01:12:37,205 - DEBUG - debug message
