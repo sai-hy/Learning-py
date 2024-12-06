@@ -1,4 +1,5 @@
-'''import os
+
+import os
 print(os.name)  #获取操作系统类型
 print(os.getenv('PATH')) #获取环境变量
 
@@ -31,7 +32,8 @@ print(time.asctime())
 print(time.ctime())   
 print(time.strftime('%Y-%m-%D %H:%M:%S'))   #将struct_time格式化成字符串
 print(time.strptime('2020-10-10 10:10:10','%Y-%m-%d %H:%M:%S')) #将字符串格式化成struct_time
-'''
+
+
 #日志模块 logging
 import logging
 logging.basicConfig(filename='log.log',filemode='w+',level=logging.NOTSET,format='%(asctime)s - %(levelname)s - %(message)s')
@@ -43,4 +45,12 @@ logging.critical('critical message')
 logging.critical('critical message')
 logging.warning('warning message')
 logging.warning('warning message')
-logging.debug('debug message')
+logging.debug('debug message') 
+
+
+import random
+print(random.random()) #随机整数
+print(random.randrange(1,5)) #随机整数
+
+# import requests as req
+# print(req.get('https://www.baidu.com').text)
